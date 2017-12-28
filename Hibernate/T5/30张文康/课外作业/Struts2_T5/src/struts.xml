@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <!-- <constant name="struts.devMode" value="true" />
+ -->
+
+	<package name="userManager" namespace = "/user" extends="struts-default">
+		  <global-results>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </global-results>
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+	
+		<action name="user" class="com.qhit.lh.g4.ZWK.T05.action.UserAction" >
+				<result name="listUser">/JSP/userList.jsp</result>
+				<result name="all">/JSP/userList.jsp</result>
+				<result name="add"  type="redirectAction">user!All</result>
+				<result name="delete"  type="redirectAction">user!All</result>
+				<result name="update"  type="redirectAction">user!All</result>
+				<result name="getu"  >/JSP/update.jsp</result>
+				<result name="error" >/JSP/error.jsp</result>
+		</action>
+	
+		<!-- <action name="All" class="com.qhit.lh.g4.ZWK.T05.action.UserAction"  method = "All">
+				
+				<result name="error" >/JSP/error.jsp</result>
+		</action>
+		<action name="Add" class="com.qhit.lh.g4.ZWK.T05.action.UserAction"  method = "Add">	
+				
+				<result name="error"  >/JSP/error.jsp</result>
+		</action>
+		<action name="Delete" class="com.qhit.lh.g4.ZWK.T05.action.UserAction"  method = "Delete">
+				
+				<result name="error"  >/JSP/error.jsp</result>
+		</action>
+		<action name="Update" class="com.qhit.Struts2_T05.action.UserAction"  method = "Update">
+			
+				<result name="error" >/JSP/error.jsp</result>
+		</action>
+		<action name="get" class="com.qhit.lh.g4.ZWK.T05.action.UserAction"  method = "get">
+				
+				<result name="error"  >/JSP/error.jsp</result>
+		</action>
+ -->
+			
+
+		<!-- <action name="*user" class="com.qhit.Struts2_T05.action.UserAction"  method = "{1}">
+			<result name="listUser">/JSP/userList.jsp</result>
+			
+		</action> -->
+	</package>
+
+</struts>

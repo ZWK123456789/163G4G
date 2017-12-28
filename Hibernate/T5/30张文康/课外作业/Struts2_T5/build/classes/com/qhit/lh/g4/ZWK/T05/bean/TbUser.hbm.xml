@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2017-12-20 18:03:58 by Hibernate Tools 5.0.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_users" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.qhit.lh.g4.ZWK.T05.bean.TbUser" optimistic-lock="version" polymorphism="implicit" schema="dbo" select-before-update="false" table="tb_users">
+        <id name="uid" type="java.lang.Integer">
+            <column name="uid"/>
+            <generator class="native"/>
+        </id>
+        <property generated="never" lazy="false" name="uname" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="uname" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="upwd" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="upwd" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="birthday" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="birthday"/>
+        </property>
+        <property generated="never" lazy="false" name="sex" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="sex"/>
+        </property>
+        <property generated="never" lazy="false" name="active" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="active"/>
+        </property>
+    </class>
+</hibernate-mapping>
