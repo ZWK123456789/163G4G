@@ -1,0 +1,272 @@
+18:32:51 SQL> @C:\Oracle\Orcl_table_T03.txt;
+
+表已创建。
+
+
+表已创建。
+
+
+表已创建。
+
+18:33:47 SQL> select * from dept;
+
+未选定行
+
+18:33:56 SQL> insert into dept values(2,'市场部',6,'22222',1);
+
+已创建 1 行。
+
+18:35:49 SQL> ed
+已写入 file afiedt.buf
+
+  1  insert into dept values(3,'财务部',7,'22223',1);
+  2* insert into dept values(4,'采购部',8,'22224',1);
+18:38:02 SQL> r;
+  1  insert into dept values(3,'财务部',7,'22223',1);
+  2* insert into dept values(4,'采购部',8,'22224',1);
+insert into dept values(4,'采购部',8,'22224',1);
+ *
+第 2 行出现错误: 
+ORA-00911: 无效字符 
+
+
+18:38:04 SQL> ed
+已写入 file afiedt.buf
+
+  1  insert into dept values(3,'财务部',7,'22223',1);
+  2* insert into dept values(4,'采购部',8,'22224',1);
+18:38:36 SQL> /
+insert into dept values(4,'采购部',8,'22224',1);
+ *
+第 2 行出现错误: 
+ORA-00911: 无效字符 
+
+
+18:38:42 SQL> del 2
+18:39:23 SQL> l
+  1* insert into dept values(3,'财务部',7,'22223',1);
+18:39:24 SQL> /
+insert into dept values(3,'财务部',7,'22223',1);
+                                               *
+第 1 行出现错误: 
+ORA-00911: 无效字符 
+
+
+18:39:27 SQL> ed
+已写入 file afiedt.buf
+
+  1* insert into dept values(3,'财务部',7,'22223',1);
+18:39:41 SQL> insert into dept values(3,'财务部',7,'22223',1);
+
+已创建 1 行。
+
+18:39:48 SQL> insert into dept values(4,'采购部',8,'22224',1);
+
+已创建 1 行。
+
+18:40:39 SQL> select * from dept;
+
+       DID DNAME                                       MANAGER                  
+---------- ---------------------------------------- ----------                  
+TEL                                                              MASTER         
+------------------------------------------------------------ ----------         
+         2 市场部                                            6                  
+22222                                                                 1         
+                                                                                
+         3 财务部                                            7                  
+22223                                                                 1         
+                                                                                
+         4 采购部                                            8                  
+22224                                                                 1         
+                                                                                
+
+18:40:49 SQL> insert into emp values(5,'tom','m',sysdate-234,4500.00,1);
+
+已创建 1 行。
+
+18:42:22 SQL> insert into emp values(6,'tim','m',sysdate,4800.00,2);
+
+已创建 1 行。
+
+18:43:06 SQL> insert into emp values(7,'jack','f',sysdate-20,5800.00,3);
+
+已创建 1 行。
+
+18:43:42 SQL> --查询所有员工及其所在部门的信息
+18:48:31 SQL> select e.name,d.* from dept d inner join emp e on d.did=e.did;
+select e.name,d.* from dept d inner join emp e on d.did=e.did
+       *
+第 1 行出现错误: 
+ORA-00904: "E"."NAME": 标识符无效 
+
+
+18:49:54 SQL> select e.ename,d.* from dept d inner join emp e on d.did=e.did;
+
+ENAME                       DID DNAME                                           
+-------------------- ---------- ----------------------------------------        
+   MANAGER TEL                                                                  
+---------- ------------------------------------------------------------         
+    MASTER                                                                      
+----------                                                                      
+tim                           2 市场部                                          
+         6 22222                                                                
+         1                                                                      
+                                                                                
+jack                          3 财务部                                          
+         7 22223                                                                
+         1                                                                      
+
+ENAME                       DID DNAME                                           
+-------------------- ---------- ----------------------------------------        
+   MANAGER TEL                                                                  
+---------- ------------------------------------------------------------         
+    MASTER                                                                      
+----------                                                                      
+                                                                                
+
+18:50:15 SQL> --查询所有部门及其部门下的员工（没有员工的部门也要查询出来）
+18:54:23 SQL> select d.dname,e.ename from dept d left join emp e on d.did=e.did;
+
+DNAME                                    ENAME                                  
+---------------------------------------- --------------------                   
+市场部                                   tim                                    
+财务部                                   jack                                   
+采购部                                                                          
+
+18:55:42 SQL> --查询所有部门编号大于2及其部门下的员工
+18:57:02 SQL> select e.ename ,d.dname from dept d inner join emp e on d.did=e.did where d.did>2;
+
+ENAME                DNAME                                                      
+-------------------- ----------------------------------------                   
+jack                 财务部                                                     
+
+18:58:18 SQL> --查询所有雇员及其经理的名称
+18:59:02 SQL> select ename from emp;
+
+ENAME                                                                           
+--------------------                                                            
+tom                                                                             
+tim                                                                             
+jack                                                                            
+
+19:00:11 SQL> --查询各部门的最低薪水，最高薪水和平均薪水
+19:01:25 SQL> select d.dname , min(e.sar) 最低薪水,max(e.sar) 最高薪水,avg(e.sar) 平均薪水 from dept d inner join emp e on d.did=e.did where group by d.dname;
+select d.dname , min(e.sar) 最低薪水,max(e.sar) 最高薪水,avg(e.sar) 平均薪水 from dept d inner join emp e on d.did=e.did where group by d.dname
+                                                                                                                                           *
+第 1 行出现错误: 
+ORA-00936: 缺失表达式 
+
+
+19:04:33 SQL> select d.did,min(e.sar) 最低薪水,max(e.sar) 最高薪水,avg(e.sar) 平均薪水 from dept d inner join emp e on d.did=e.did where group by d.did;
+select d.did,min(e.sar) 最低薪水,max(e.sar) 最高薪水,avg(e.sar) 平均薪水 from dept d inner join emp e on d.did=e.did where group by d.did
+                                                                                                                                       *
+第 1 行出现错误: 
+ORA-00936: 缺失表达式 
+
+
+19:06:55 SQL> select d.dname , min(e.sar) 最低薪水,max(e.sar) 最高薪水,avg(e.sar) 平均薪水 from dept d inner join emp e on d.did=e.did where group by d.dname;
+select d.dname , min(e.sar) 最低薪水,max(e.sar) 最高薪水,avg(e.sar) 平均薪水 from dept d inner join emp e on d.did=e.did where group by d.dname
+                                                                                                                                           *
+第 1 行出现错误: 
+ORA-00936: 缺失表达式 
+
+
+19:07:58 SQL> select d.dname , min(e.sar) 最低薪水,max(e.sar) 最高薪水,avg(e.sar) 平均薪水 from dept d inner join emp e on d.did=e.did group by d.dname;
+
+DNAME                                      最低薪水   最高薪水   平均薪水       
+---------------------------------------- ---------- ---------- ----------       
+市场部                                         4800       4800       4800       
+财务部                                         5800       5800       5800       
+
+19:08:17 SQL> --查询员工数大于5的部门最高，最低，平均薪水
+19:09:27 SQL> select d.dname , min(e.sar) 最低薪水,max(e.sar) 最高薪水,avg(e.sar) 平均薪水 from dept d inner join emp e on d.did=e.did where d.did>5 group by d.dname;
+
+未选定行
+
+19:09:48 SQL> select d.dname , min(e.sar) 最低薪水,max(e.sar) 最高薪水,avg(e.sar) 平均薪水 from dept d inner join emp e on d.did=e.did where d.did>1 group by d.dname;
+
+DNAME                                      最低薪水   最高薪水   平均薪水       
+---------------------------------------- ---------- ---------- ----------       
+市场部                                         4800       4800       4800       
+财务部                                         5800       5800       5800       
+
+19:10:05 SQL> --查询公司所有的非部门经理的员工的编号和名称
+19:11:37 SQL> select e.eid,e.ename from emp e eid not in(select d.manager from dept d);
+select e.eid,e.ename from emp e eid not in(select d.manager from dept d)
+                                *
+第 1 行出现错误: 
+ORA-00933: SQL 命令未正确结束 
+
+
+19:13:11 SQL> select e.eid,e.ename from emp e e.eid not in(select d.manager from dept d);
+select e.eid,e.ename from emp e e.eid not in(select d.manager from dept d)
+                                *
+第 1 行出现错误: 
+ORA-00933: SQL 命令未正确结束 
+
+
+19:14:07 SQL> select e.eid,e.ename from emp e e.eid not in(select d.manager from dept d);
+select e.eid,e.ename from emp e e.eid not in(select d.manager from dept d)
+                                *
+第 1 行出现错误: 
+ORA-00933: SQL 命令未正确结束 
+
+
+19:14:31 SQL> select e.eid,e.ename from emp e where e.eid not in(select d.manager from dept d);
+
+       EID ENAME                                                                
+---------- --------------------                                                 
+         5 tom                                                                  
+
+19:14:53 SQL> --查询工资大于4000的所有部门经理的信息
+19:15:55 SQL> select e.* from emp e where e.eid in(select d.manager from dept d ) and e.sar>5000;
+
+       EID ENAME                SEX  HIRE                  SAR        DID       
+---------- -------------------- ---- -------------- ---------- ----------       
+         7 jack                 f    26-2月 -18           5800          3       
+
+19:17:48 SQL> --查询emp表有但newenp表没有的数据
+19:23:12 SQL> create table newemp as select ename,sex,hire from emp ;
+
+表已创建。
+
+19:24:38 SQL> select * from emp minus select * from newemp;
+select * from emp minus select * from newemp
+*
+第 1 行出现错误: 
+ORA-01789: 查询块具有不正确的结果列数 
+
+
+19:26:12 SQL> drop table newemp;
+
+表已删除。
+
+19:28:02 SQL> create table newemp as select * from emp;
+
+表已创建。
+
+19:28:24 SQL> select * from emp minus select * from newemp;
+
+未选定行
+
+19:28:48 SQL> --查询emp表第3到第5条记录
+19:30:32 SQL> select * from emp where rownum between 3 and 5;
+
+未选定行
+
+19:35:33 SQL> select * from emp where rownum between 1 and 2;
+
+       EID ENAME                SEX  HIRE                  SAR        DID       
+---------- -------------------- ---- -------------- ---------- ----------       
+         5 tom                  m    27-7月 -17           4500          1       
+         6 tim                  m    18-3月 -18           4800          2       
+
+19:35:42 SQL> select rownum,rowId from emp ;
+
+    ROWNUM ROWID                                                                
+---------- ------------------                                                   
+         1 AAASIlAAEAAAAIjAAA                                                   
+         2 AAASIlAAEAAAAIjAAB                                                   
+         3 AAASIlAAEAAAAIjAAC                                                   
+
+19:36:03 SQL> spool off

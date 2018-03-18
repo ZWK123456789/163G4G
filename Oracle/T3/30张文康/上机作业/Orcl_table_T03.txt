@@ -1,0 +1,26 @@
+--部门表
+create table dept(
+  did integer primary key , --主键
+  dname varchar2(20) ,--部门名称
+  manager integer ,--外键，部门经理
+  tel varchar2(30), -- 部门电话
+  master integer --上级部门
+);
+--员工表
+create table emp(
+   eid integer primary key ,--主键
+   ename varchar2(10) , --员工名称
+   sex varchar2(2), --员工性别
+   hire date, --入职日期
+   sar number(8,2),--公资
+   did integer -- 外键，部门
+);
+--工作经历表
+create table history(
+  hid integer primary key ,--主键
+  startdate date ,--入职日期
+  enddate date ,--离职日期
+  place varchar2(20),--公司名称
+  job varchar2(20),-- 职位
+  eid integer --外键，所属员工
+);

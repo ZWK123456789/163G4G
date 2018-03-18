@@ -1,0 +1,125 @@
+SQL> conn scott/tiger
+已连接。
+SQL> disc sys
+从 Oracle Database 11g Release 11.2.0.1.0 - Production 断开
+SQL> show user
+USER 为 ""
+SQL> conn scott/tiger
+已连接。
+SQL> dsc dept
+SP2-0042: 未知命令 "dsc dept" - 其余行忽略。
+SQL> desc dept
+ 名称                                      是否为空? 类型
+ ----------------------------------------- -------- ----------------------------
+ DEPTNO                                    NOT NULL NUMBER(2)
+ DNAME                                              VARCHAR2(14)
+ LOC                                                VARCHAR2(13)
+
+SQL> host path
+
+SQL> show ORACLE_SID
+SP2-0158: 未知的 SHOW 选项 "ORACLE_SID"
+SQL> list
+SP2-0223: SQL 缓冲区中不存在行。
+SQL> shutdown
+ORA-01031: 权限不足
+SQL> conn sys/123456
+ERROR:
+ORA-28009: connection as SYS should be as SYSDBA or SYSOPER 
+
+
+警告: 您不再连接到 ORACLE。
+SQL> conn sys/123456 as sysdba
+已连接。
+SQL> shutdown
+数据库已经关闭。
+已经卸载数据库。
+ORACLE 例程已经关闭。
+SQL> startup
+ORACLE 例程已经启动。
+
+Total System Global Area  778387456 bytes                                       
+Fixed Size                  1374808 bytes                                       
+Variable Size             243271080 bytes                                       
+Database Buffers          528482304 bytes                                       
+Redo Buffers                5259264 bytes                                       
+数据库装载完毕。
+数据库已经打开。
+SQL> show sga
+
+Total System Global Area  778387456 bytes                                       
+Fixed Size                  1374808 bytes                                       
+Variable Size             243271080 bytes                                       
+Database Buffers          528482304 bytes                                       
+Redo Buffers                5259264 bytes                                       
+SQL> show user
+USER 为 "SYS"
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+--------------                                                                  
+16-3月 -18                                                                      
+
+SQL> set time on
+10:40:09 SQL> set pagesize 1
+10:40:21 SQL> set numformat $999,99,99
+10:41:07 SQL> set feedback on
+10:41:55 SQL> set null '不详'
+10:42:06 SQL> set linesize 50
+10:42:28 SQL> set heading on
+10:43:05 SQL> set echo on
+10:43:15 SQL> set newpage 2
+10:43:29 SQL> set numwidth 2
+10:43:45 SQL> list
+  1* select sysdate from dual
+10:43:54 SQL> select * from dept
+10:44:11   2  ;
+select * from dept
+              *
+第 1 行出现错误: 
+ORA-00942: 表或视图不存在 
+
+
+10:44:12 SQL> conn scott/tiger
+已连接。
+10:44:24 SQL> select * from dept ;
+
+
+        $10 ACCOUNTING                            
+
+
+NEW YORK                                          
+
+
+                                                  
+
+
+        $20 RESEARCH                              
+
+
+DALLAS                                            
+
+
+                                                  
+
+
+        $30 SALES                                 
+
+
+CHICAGO                                           
+
+
+                                                  
+
+
+        $40 OPERATIONS                            
+
+
+BOSTON                                            
+
+
+                                                  
+
+已选择4行。
+
+10:44:28 SQL> spool off

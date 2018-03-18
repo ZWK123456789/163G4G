@@ -1,0 +1,58 @@
+10:26:06 SQL> select * from dept;
+
+星期五 3月  16                                                        第    1
+                                     部门表
+
+    DEPTNO DNAME                        LOC                                     
+---------- ---------------------------- --------------------------              
+        10 ACCOUNTING                   NEW YORK                                
+        20 RESEARCH                     DALLAS                                  
+        30 SALES                        CHICAGO                                 
+        40 OPERATIONS                   BOSTON                                  
+
+10:26:18 SQL> btitle left '制作人：Tom';
+10:26:59 SQL> /
+
+星期五 3月  16                                                        第    1
+                                     部门表
+
+    DEPTNO DNAME                        LOC                                     
+---------- ---------------------------- --------------------------              
+        10 ACCOUNTING                   NEW YORK                                
+        20 RESEARCH                     DALLAS                                  
+        30 SALES                        CHICAGO                                 
+        40 OPERATIONS                   BOSTON                                  
+
+
+
+制作人：Tom                                                                     
+
+10:27:02 SQL> column deptno heading '部门号'
+10:28:05 SQL> column deptno format $999.999.999
+SP2-0246: 非法的 FORMAT 字符串"$999.999.999"
+10:28:48 SQL> column deptno format $999,999,99
+10:29:08 SQL> column loc null '不详'
+10:29:37 SQL> column jus center
+SP2-0158: 未知的 COLUMN 选项 "center"
+10:29:55 SQL> column jus 'center'
+SP2-0158: 未知的 COLUMN 选项 "'center'"
+10:30:54 SQL> column dname jus center
+10:31:17 SQL> list
+  1* select * from dept
+10:31:21 SQL> /
+
+星期五 3月  16                                                        第    1
+                                     部门表
+
+      部门号            DNAME             LOC                                   
+------------ ---------------------------- --------------------------            
+         $10 ACCOUNTING                   NEW YORK                              
+         $20 RESEARCH                     DALLAS                                
+         $30 SALES                        CHICAGO                               
+         $40 OPERATIONS                   BOSTON                                
+
+
+
+制作人：Tom                                                                     
+
+10:31:22 SQL> spool off

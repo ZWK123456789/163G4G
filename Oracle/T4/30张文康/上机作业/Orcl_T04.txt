@@ -1,0 +1,266 @@
+19:39:14 SQL> select ceil(3.1415) from dual;
+
+CEIL(3.1415)                                                                    
+------------                                                                    
+           4                                                                    
+
+19:40:56 SQL> select fool(3.11) from daul;
+select fool(3.11) from daul
+                       *
+第 1 行出现错误: 
+ORA-00942: 表或视图不存在 
+
+
+19:41:18 SQL> select fool(3.11) from dual;
+select fool(3.11) from dual
+       *
+第 1 行出现错误: 
+ORA-00904: "FOOL": 标识符无效 
+
+
+19:41:24 SQL> select floor(3.11) from dual;
+
+FLOOR(3.11)                                                                     
+-----------                                                                     
+          3                                                                     
+
+19:41:38 SQL> select mon(10) from dual;
+select mon(10) from dual
+       *
+第 1 行出现错误: 
+ORA-00904: "MON": 标识符无效 
+
+
+19:42:03 SQL> select mod(10) from dual;
+select mod(10) from dual
+       *
+第 1 行出现错误: 
+ORA-00909: 参数个数无效 
+
+
+19:42:12 SQL> select mod(10,3) from dual;
+
+ MOD(10,3)                                                                      
+----------                                                                      
+         1                                                                      
+
+19:42:31 SQL> select mod(10,3) from dual;
+
+ MOD(10,3)                                                                      
+----------                                                                      
+         1                                                                      
+
+19:42:33 SQL> select power(2,2) from dual;
+
+POWER(2,2)                                                                      
+----------                                                                      
+         4                                                                      
+
+19:43:03 SQL> select power(16,1/2) from dual;
+
+POWER(16,1/2)                                                                   
+-------------                                                                   
+            4                                                                   
+
+19:43:21 SQL> select sqrt(16) from dual;
+
+  SQRT(16)                                                                      
+----------                                                                      
+         4                                                                      
+
+19:43:41 SQL> select round(4.5) from dual;
+
+ROUND(4.5)                                                                      
+----------                                                                      
+         5                                                                      
+
+19:44:00 SQL> select trunc(3.14445,3) from dual;
+
+TRUNC(3.14445,3)                                                                
+----------------                                                                
+           3.144                                                                
+
+19:44:25 SQL> select concat('sss','dd') from dual;
+
+CONCAT('SS                                                                      
+----------                                                                      
+sssdd                                                                           
+
+19:55:39 SQL> select substr('abcd','c',1) from dual;
+select substr('abcd','c',1) from dual
+                     *
+第 1 行出现错误: 
+ORA-01722: 无效数字 
+
+
+19:56:49 SQL> select substr('abcd','c',2) from dual;
+select substr('abcd','c',2) from dual
+                     *
+第 1 行出现错误: 
+ORA-01722: 无效数字 
+
+
+19:57:19 SQL> select substr('abcd',2,2) from dual;
+
+SUBS                                                                            
+----                                                                            
+bc                                                                              
+
+19:57:48 SQL> select initcap('abcd') from dual;
+
+INITCAP(                                                                        
+--------                                                                        
+Abcd                                                                            
+
+19:58:11 SQL> select translate('abcd','b','r') from dual;
+
+TRANSLAT                                                                        
+--------                                                                        
+arcd                                                                            
+
+19:59:41 SQL> select instr('abcd','d') from dual;
+
+INSTR('ABCD','D')                                                               
+-----------------                                                               
+                4                                                               
+
+20:00:29 SQL> select month_between(sysdate,sysadte_180) from dual;
+select month_between(sysdate,sysadte_180) from dual
+       *
+第 1 行出现错误: 
+ORA-00904: "MONTH_BETWEEN": 标识符无效 
+
+
+20:01:59 SQL> select months_between(sysdate,sysadte_180) from dual;
+select months_between(sysdate,sysadte_180) from dual
+                              *
+第 1 行出现错误: 
+ORA-00904: "SYSADTE_180": 标识符无效 
+
+
+20:02:13 SQL> select months_between(sysdate,sysadte-180) from dual;
+select months_between(sysdate,sysadte-180) from dual
+                              *
+第 1 行出现错误: 
+ORA-00904: "SYSADTE": 标识符无效 
+
+
+20:02:22 SQL> select months_between(sysdate,sysadte-180) from dual;
+select months_between(sysdate,sysadte-180) from dual
+                              *
+第 1 行出现错误: 
+ORA-00904: "SYSADTE": 标识符无效 
+
+
+20:03:25 SQL> select months_between(sysdate,to_date('2017-02-03','yyyy-mm-dd')) from dual;
+
+MONTHS_BETWEEN(SYSDATE,TO_DATE('2017-02-03','YYYY-MM-DD'))                      
+----------------------------------------------------------                      
+                                                13.5108445                      
+
+20:04:06 SQL> select add_months(sysdate,5) from dual;
+
+ADD_MONTHS(SYS                                                                  
+--------------                                                                  
+18-8月 -18                                                                      
+
+20:05:19 SQL> select next_day(sysdate,2) from dual;
+
+NEXT_DAY(SYSDA                                                                  
+--------------                                                                  
+19-3月 -18                                                                      
+
+20:06:22 SQL> select last_day(sysdate) from dual;
+
+LAST_DAY(SYSDA                                                                  
+--------------                                                                  
+31-3月 -18                                                                      
+
+20:06:45 SQL> select to_char(sysdate,'yyyy:mm:dd') from dual;
+
+TO_CHAR(SYSDATE,'YYY                                                            
+--------------------                                                            
+2018:03:18                                                                      
+
+20:08:11 SQL> select to_number('2018年02月03日','yyyy:mm:dd') from dual;
+select to_number('2018年02月03日','yyyy:mm:dd') from dual
+                                     *
+第 1 行出现错误: 
+ORA-01481: 无效的数字格式模型 
+
+
+20:09:23 SQL> select to_number('$123.22','$999,99') from dual;
+select to_number('$123.22','$999,99') from dual
+                 *
+第 1 行出现错误: 
+ORA-01722: 无效数字 
+
+
+20:10:19 SQL> select to_number('$123.22','$999.99') from dual;
+
+TO_NUMBER('$123.22','$999.99')                                                  
+------------------------------                                                  
+                        123.22                                                  
+
+20:11:54 SQL> select to_number('$123,22','$999,99') from dual;
+
+TO_NUMBER('$123,22','$999,99')                                                  
+------------------------------                                                  
+                         12322                                                  
+
+20:12:07 SQL> update dept set tel=null where did=3;
+
+已更新 1 行。
+
+20:12:51 SQL> select * ,nvl(tel,'暂无') from dept;
+select * ,nvl(tel,'暂无') from dept
+         *
+第 1 行出现错误: 
+ORA-00923: 未找到要求的 FROM 关键字 
+
+
+20:13:49 SQL> select d.* ,nvl(d.tel,'暂无') from dept d;
+
+       DID DNAME                                       MANAGER                  
+---------- ---------------------------------------- ----------                  
+TEL                                                              MASTER         
+------------------------------------------------------------ ----------         
+NVL(D.TEL,'暂无')                                                               
+------------------------------------------------------------                    
+         2 市场部                                            6                  
+22222                                                                 1         
+22222                                                                           
+                                                                                
+         3 财务部                                            7                  
+                                                                      1         
+暂无                                                                            
+
+       DID DNAME                                       MANAGER                  
+---------- ---------------------------------------- ----------                  
+TEL                                                              MASTER         
+------------------------------------------------------------ ----------         
+NVL(D.TEL,'暂无')                                                               
+------------------------------------------------------------                    
+                                                                                
+         4 采购部                                            8                  
+22224                                                                 1         
+22224                                                                           
+                                                                                
+
+20:14:27 SQL> select d.dname ,nvl(d.tel,'暂无') from dept d;
+
+DNAME                                                                           
+----------------------------------------                                        
+NVL(D.TEL,'暂无')                                                               
+------------------------------------------------------------                    
+市场部                                                                          
+22222                                                                           
+                                                                                
+财务部                                                                          
+暂无                                                                            
+                                                                                
+采购部                                                                          
+22224                                                                           
+                                                                                
+
+20:14:59 SQL> spool off
